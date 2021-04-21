@@ -1,20 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router'
 // 还有 createWebHashHistory 和 createMemoryHistory
 import Login from '../views/login/index.vue'
+import Home from '../views/home/index.vue'
 import NoPage from "../views/exception/404.vue"
-import Buyers from '../router/buyers'
-import Supplier from '../router/supplier'
-import Mall from '../router/mall'
+
+// import Mall from '../router/mall'
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    ...Mall,
-    ...Supplier,
-    ...Buyers,
     {
       path: '/',
       redirect: '/login',
       name: "Home",
+    },
+    {
+      path: '/home',
+      name: "Home",
+      component: Home,
     },
     {
       path: '/login',
@@ -33,7 +35,6 @@ const router = createRouter({
       redirect: '/404',
       name: "NoPage",
     }
-
   ],
 })
 

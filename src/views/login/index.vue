@@ -1,10 +1,6 @@
 <template>
   <main class="container h-screen mx-auto">
-    {{formState}} {{formState.userType}}
     <div class="w-1/2 m-auto pt-8">
-      <a-radio-group v-model:value="formState.userType" >
-        <a-radio v-for="(value, key) in roleMap" :value="key" :key="key">{{value}}</a-radio>
-      </a-radio-group>
       <a-form
         layout="inline"
         :model="formState"
@@ -60,12 +56,11 @@ export default {
     })
     const handleFinish = (values) => {
       setToken(toRaw(formState).userType)
-      API.addUser().then(res => {
-        console.log(res)
-      })
-      storage.set('role',toRaw(formState).userType)
+      // API.addUser().then(res => {
+      //   console.log(res)
+      // })
       router.push({
-        name: toRaw(formState).userType
+        name: 'Home'
       })
     };
     const handleFinishFailed = (errors) => {

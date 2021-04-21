@@ -11,19 +11,14 @@ router.beforeEach(async(to, from, next) => {
   const token = getToken()
   // set page title
   document.title = setPageTitle(to.meta.title)
-  let role = storage.get('role')
-  if(!token || !role) {
+  if(!token) {
     if(to.path=='/login'){
       next()
     }else{
       next({name: 'Login'});
     }
   }else {
-    if(to.name === role || whiteList.includes(to.path)) {
-      next()
-    }else(
-      next({name: role})
-    )
+    next()
   }
 })
 router.afterEach(() => {

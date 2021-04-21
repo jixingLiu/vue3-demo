@@ -1,9 +1,6 @@
 import { createStore } from 'vuex'
 import User from './modules/user'
 import storage from '../utils/storage'
-import Mall from '../router/mall'
-import Buyers from '../router/buyers'
-import Supplier from '../router/supplier'
 // Create a new store instance.
 const store = createStore({
   modules: {
@@ -17,10 +14,7 @@ const store = createStore({
   mutations: {
     increment (state) {
       state.count++
-    },
-    resetRouter(state){
-      state.asyncRouters = null
-    },
+    }
   },
   actions: {
 

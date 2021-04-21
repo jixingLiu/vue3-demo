@@ -14,7 +14,7 @@ export default {
     const handleLoginout = function() {
       removeToken()
       router.push({
-        name: 'Home'
+        name: 'Login'
       })
     }
     return {

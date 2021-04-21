@@ -2,6 +2,7 @@
   "name": "ghc-health-cms",
   "version": "0.0.0",
   "scripts": {
+    "prepare": "husky install",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
@@ -21,6 +22,7 @@
     "@vitejs/plugin-vue": "^1.2.1",
     "@vue/compiler-sfc": "^3.0.5",
     "autoprefixer": "^10.2.5",
+    "husky": "^6.0.0",
     "less": "^4.1.1",
     "postcss": "^8.2.10",
     "tailwindcss": "^2.1.1",
