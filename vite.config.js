@@ -1,5 +1,6 @@
-import { defineConfig, loadEnv } from 'vite'
+import { loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 
 
 import path from 'path'
@@ -16,19 +17,12 @@ export default ({command, mode}) => {
   console.log(command, mode, 'command, mode')
   return {
     plugins: [
-      vue()
+      vue(),
+      vueJsx()
     ],
     server: {
       port: 8888,
       proxy: {
-        // 字符串简写写法
-        '/basic-api/login': 'http://admin-api.macrozheng.com/admin/login',
-        // 选项写法
-        '/api': {
-          target: 'http://jsonplaceholder.typicode.com',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, '')
-        },
         // 正则表达式写法
         '^/fallback/.*': {
           target: 'http://jsonplaceholder.typicode.com',
@@ -54,7 +48,9 @@ export default ({command, mode}) => {
           javascriptEnabled: true
         }
       }
-    }
+    },
+    optimizeDeps: {
+      include: ['lodash-es'],
+    },
   }
 }
-

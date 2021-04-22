@@ -5,21 +5,22 @@
   </div>
 </template>
 <script>
-import { useRouter } from 'vue-router'
-import { removeToken } from '../../utils/auth'
+import { useRouter } from 'vue-router';
+import { removeToken } from '../../utils/auth';
+
 export default {
   setup() {
-    console.log(import.meta.env, 999)
-    const router = useRouter()
-    const handleLoginout = function() {
-      removeToken()
+    console.log(import.meta.env, 999);
+    const router = useRouter();
+    const handleLoginout = function () {
+      removeToken();
       router.push({
-        name: 'Login'
-      })
-    }
+        name: 'Login',
+      });
+    };
     return {
-      handleLoginout
-    }
+      handleLoginout,
+    };
   },
-}
+};
 </script>

@@ -9,12 +9,12 @@
       >
         <a-form-item>
           <a-input v-model:value="formState.user" placeholder="Username">
-            <template #prefix><UserOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
+            <!-- <template #prefix><UserOutlined style="color: rgba(0, 0, 0, 0.25)" /></template> -->
           </a-input>
         </a-form-item>
         <a-form-item>
           <a-input v-model:value="formState.password" type="password" placeholder="Password">
-            <template #prefix><LockOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
+            <!-- <template #prefix><LockOutlined style="color: rgba(0, 0, 0, 0.25)" /></template> -->
           </a-input>
         </a-form-item>
         <a-form-item>
@@ -32,36 +32,36 @@
   </main>
 </template>
 <script>
-import { UserOutlined, LockOutlined } from '@ant-design/icons-vue';
+// import { UserOutlined, LockOutlined } from '@ant-design/icons-vue';
 import { reactive, toRaw, toRefs } from 'vue';
-import { getToken, setToken } from '../../utils/auth'
 import { useRouter } from 'vue-router';
-import storage  from '../../utils/storage'
-import { roleMap } from '../../config/const'
-import { useStore } from "vuex"
-import API from '../../api/index'
+import { useStore } from 'vuex';
+import { getToken, setToken } from '../../utils/auth';
+import storage from '../../utils/storage';
+import { roleMap } from '../../config/const';
+import API from '../../api/index';
 
 export default {
   components: {
-    UserOutlined,
-    LockOutlined,
+    // UserOutlined,
+    // LockOutlined,
   },
   setup(props, context) {
-    const store = useStore()
-    const router = useRouter()
+    const store = useStore();
+    const router = useRouter();
     const formState = reactive({
-      user: "",
-      password: "",
-      userType: 'Mall'
-    })
+      user: '',
+      password: '',
+      userType: 'Mall',
+    });
     const handleFinish = (values) => {
-      setToken(toRaw(formState).userType)
+      setToken(toRaw(formState).userType);
       // API.addUser().then(res => {
       //   console.log(res)
       // })
       router.push({
-        name: 'Home'
-      })
+        name: 'Home',
+      });
     };
     const handleFinishFailed = (errors) => {
       console.log(errors, 'error');
@@ -71,8 +71,7 @@ export default {
       formState,
       handleFinish,
       handleFinishFailed,
-    }
-
+    };
   },
-}
+};
 </script>
